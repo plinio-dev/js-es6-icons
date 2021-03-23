@@ -175,3 +175,17 @@ iconsColored.forEach((icon) => {
   // con il metodo append di jQuery inseriamo il div nell'html
   $('.icons').append(html);
 });
+
+
+
+// Milestone 3
+// Creiamo una select con i tipi di icone e usiamola per filtrare le icone
+
+// seleziono con jQuery lemento nel DOM e lo inserisco in un const
+const select = $('#type');
+
+// cicliamo con forEach l'array categories per creare le tre categorie da inseriee nel DOM con append
+categories.forEach((item) => {
+  const option = `<option value="${item}">${item}</option>`;
+  select.append(option);
+});

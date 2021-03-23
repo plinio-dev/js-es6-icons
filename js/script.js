@@ -134,3 +134,6 @@ icons.forEach((icon) => {
   // con il metodo append di jQuery inseriamo il div nell'html
   $('.icons').append(html);
 });
+
+
+console.log(icons);

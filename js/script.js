@@ -124,7 +124,6 @@ const icons = [
 // //
 
 
-console.log(icons);
 
 // Milestone 2
 // Coloriamo le icone per tipo
@@ -147,8 +146,7 @@ icons.forEach((item, i) => {
 });
 
 
-console.log(colors);
-console.log(categories);
+
 
 const iconsColored = icons.map((icon ) => {
     // ora associamo gli indici di colors e categories
@@ -159,7 +157,6 @@ const iconsColored = icons.map((icon ) => {
     // ritorno gli oggetti con le nuove proprietà
     return icon;
 });
-console.log(iconsColored);
 
 
 // stampiamo le icone colorate
@@ -181,11 +178,42 @@ iconsColored.forEach((icon) => {
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
-// seleziono con jQuery lemento nel DOM e lo inserisco in un const
+iconsContainer = $('.icons');
+
+// seleziono con jQuery l'elemento nel DOM e lo inserisco in un const
 const select = $('#type');
 
-// cicliamo con forEach l'array categories per creare le tre categorie da inseriee nel DOM con append
+// cicliamo con forEach l'array categories per creare le tre categorie da inserire nel DOM con append
 categories.forEach((item) => {
   const option = `<option value="${item}">${item}</option>`;
   select.append(option);
+});
+
+// associamo la selezione del menu a tendina con la categoria/filtro esatta
+select.change(function(){
+  const optionSelected = $(this).val();
+
+  let iconsFiltered = iconsColored.filter((icon) => {
+    return icon.category == optionSelected;
+  });
+  if (iconsFiltered.lenght == 0) {
+    iconsFiltered==iconsColored;
+  };
+  console.log(iconsFiltered);
+
+
+  iconsContainer.html("");
+
+  iconsFiltered.forEach((icon) => {
+    const {name, prefix, family, color} = icon;
+
+    const html = `<div>
+    <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+    <div class="title">${name}</div>
+    </div>`;
+
+    iconsContainer.append(html);
+
+  });
+
 });

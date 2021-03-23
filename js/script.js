@@ -148,13 +148,27 @@ const colors = [
   'green'
 ];
 
-
 const categories = [];
 
 // ciclo per estrarre le categorie dai nostri oggetti e con push inserire i dati in un array
 icons.forEach((item, i) => {
+  // condizione per non far ripetere l'estrazione piu volte
   if (categories.includes(item.category) == false ) {
     categories.push(item.category)
   }
 });
+
+
+console.log(colors);
 console.log(categories);
+
+const iconsColored = icons.map((icon ) => {
+    // ora associamo gli indici di colors e categories
+    const categoryIndex = categories.indexOf(icon.category);
+    const colorItem = colors[categoryIndex];
+    // assegno la nuova proprietà color
+    icon.color = colorItem;
+    // ritorno gli oggetti con le nuove proprietà
+    return icon;
+});
+console.log(iconsColored);

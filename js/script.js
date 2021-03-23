@@ -122,18 +122,6 @@ const icons = [
 // Milestone 1
 // // Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
 // //
-icons.forEach((icon) => {
-  // usiamo la destrutturazione
-  const {name, prefix, family} = icon;
-
-  const html = `<div>
-  <i class="${family} ${prefix}${name}"></i>
-  <div class="title">${name}</div>
-  </div>`;
-
-  // con il metodo append di jQuery inseriamo il div nell'html
-  $('.icons').append(html);
-});
 
 
 console.log(icons);
@@ -172,3 +160,18 @@ const iconsColored = icons.map((icon ) => {
     return icon;
 });
 console.log(iconsColored);
+
+
+// stampiamo le icone colorate
+iconsColored.forEach((icon) => {
+  // usiamo la destrutturazione
+  const {name, prefix, family, color} = icon;
+
+  const html = `<div>
+  <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+  <div class="title">${name}</div>
+  </div>`;
+
+  // con il metodo append di jQuery inseriamo il div nell'html
+  $('.icons').append(html);
+});

@@ -123,7 +123,7 @@ const icons = [
 // // Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
 // //
 icons.forEach((icon) => {
-
+  // usiamo la destrutturazione
   const {name, prefix, family} = icon;
 
   const html = `<div>
@@ -137,3 +137,24 @@ icons.forEach((icon) => {
 
 
 console.log(icons);
+
+// Milestone 2
+// Coloriamo le icone per tipo
+//
+// creaimo un array che ha i colori scelti da noi
+const colors = [
+  'yellow',
+  'coral',
+  'green'
+];
+
+
+const categories = [];
+
+// ciclo per estrarre le categorie dai nostri oggetti e con push inserire i dati in un array
+icons.forEach((item, i) => {
+  if (categories.includes(item.category) == false ) {
+    categories.push(item.category)
+  }
+});
+console.log(categories);
